@@ -11,8 +11,8 @@
     "host": "YOUR_PROVIDER_HOST",
     "port": 22,
     "user": "YOUR_PROVIDER_USER",
-    "providerPath": "/ABSOLUTE/PATH/zk-CrossAgent-FGCS/scripts/v2/wan_provider_stdio.js",
-    "nodePath": "/ABSOLUTE/PATH/zk-CrossAgent-FGCS/scripts/wan/wan-node"
+    "providerPath": "/ABSOLUTE/PATH/zk-CrossAgent-artifact/scripts/v2/wan_provider_stdio.js",
+    "nodePath": "/ABSOLUTE/PATH/zk-CrossAgent-artifact/scripts/wan/wan-node"
   },
   "network": {
     "warmupSamples": 10,

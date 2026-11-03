@@ -3,6 +3,9 @@
 Companion artifact for **zk-CrossAgent: Task-Bounded Service Invocation
 and Asynchronous Cross-Chain Settlement** (IEEE Transactions on Services Computing submission).
 
+The frozen [TSC artifact v1.0.0](https://github.com/1-xiewenhao/zk-CrossAgent-artifact/releases/tag/tsc-artifact-v1.0.0)
+contains the implementation and evidence accompanying this submission.
+
 This repository contains the protocol implementation, smart contracts,
 zero-knowledge circuit, formal models, automated tests, experiment drivers,
 and the measurement campaigns used by the current manuscript. The archive
