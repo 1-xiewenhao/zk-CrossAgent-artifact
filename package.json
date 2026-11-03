@@ -1,8 +1,8 @@
 {
-  "name": "zk-crossagent-fgcs",
+  "name": "zk-crossagent-tsc",
   "version": "1.0.0",
   "private": true,
-  "description": "Reproduction code for task-bounded authorization and cross-chain settlement of autonomous AI agents",
+  "description": "Reproduction artifact for task-bounded service invocation and asynchronous cross-chain settlement",
   "main": "scripts/v2/gateway.js",
   "scripts": {
     "compile": "hardhat compile",
@@ -19,7 +19,9 @@
     "repro:wan": "node scripts/reproduce.js wan",
     "repro:testnet-plan": "node scripts/reproduce.js testnet-plan",
     "repro:testnet-deploy": "node scripts/reproduce.js testnet-deploy",
-    "repro:testnet": "node scripts/reproduce.js testnet"
+    "repro:testnet": "node scripts/reproduce.js testnet",
+    "repro:wan-paper": "node scripts/reproduce_paper.js wan",
+    "repro:task-workflow": "node scripts/reproduce_paper.js workflow"
   },
   "keywords": [
     "cross-chain",

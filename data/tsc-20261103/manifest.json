@@ -1,0 +1,818 @@
+{
+  "schemaVersion": 2,
+  "artifactSnapshot": "tsc-20261103",
+  "manuscriptTitle": "zk-CrossAgent: Task-Bounded Service Invocation and Asynchronous Cross-Chain Settlement",
+  "manuscriptPdfSha256": "eb3da56d1807be245ea02eb95285e67ffb2e2d8af83a236d468830a3ea794468",
+  "measurementDates": [
+    "2026-10-15",
+    "2026-11-02"
+  ],
+  "policy": "Only complete campaigns used in the current manuscript are distributed. Superseded protocol trials and budget31 pilots are excluded. Retained observations are not modified or imputed; explicitly flagged warm-ups are excluded only during analysis.",
+  "files": [
+    {
+      "path": "fault-gas/campaign_config.json",
+      "sizeBytes": 512,
+      "sha256": "bae4235d7c61eb9bbfc1797ed04e06399b3bcc30b0f3a53da0cd47f07df4bd9e",
+      "sourceSha256": "bae4235d7c61eb9bbfc1797ed04e06399b3bcc30b0f3a53da0cd47f07df4bd9e",
+      "transformation": "Byte-identical configuration from the frozen source archive."
+    },
+    {
+      "path": "fault-gas/campaign_metadata.json",
+      "sizeBytes": 540,
+      "sha256": "a3abca43663bfe438a8272c275707159ed62a316f6d8de8b6fb4b051c331b8b9",
+      "sourceSha256": "0c3ba7f701b1521aea857432cc7e39ad81efac0ae6705410f16f30081f31a050",
+      "transformation": "Allowlisted campaign, runtime, hardware, configuration hash, and public-chain metadata; omitted process diagnostics and unrelated file inventories."
+    },
+    {
+      "path": "fault-gas/fault_raw.jsonl",
+      "sizeBytes": 134123,
+      "sha256": "fae177bfab6a1f4fe2366ea68d1a14e7b282fd3e347f611da4a8e96a585eba01",
+      "sourceSha256": "fae177bfab6a1f4fe2366ea68d1a14e7b282fd3e347f611da4a8e96a585eba01",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/fault_summary.csv",
+      "sizeBytes": 1112,
+      "sha256": "b893d0bb56a1ab90428df8ff46e0eb6d209caacca7b5b52219616559298e828a",
+      "sourceSha256": "b893d0bb56a1ab90428df8ff46e0eb6d209caacca7b5b52219616559298e828a",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/fault_summary.json",
+      "sizeBytes": 2011,
+      "sha256": "f7f73de30282e08e808fd05a65717110ddd32fc4dfdd678f8c5356b1b0f3d68b",
+      "sourceSha256": "f7f73de30282e08e808fd05a65717110ddd32fc4dfdd678f8c5356b1b0f3d68b",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/gas_policy_baseline_raw.jsonl",
+      "sizeBytes": 33134,
+      "sha256": "a903ddd107f01ef39393382ef5b10c66fdc70339271353681eb5b37bc12f780b",
+      "sourceSha256": "a903ddd107f01ef39393382ef5b10c66fdc70339271353681eb5b37bc12f780b",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/gas_policy_baseline_summary.csv",
+      "sizeBytes": 2193,
+      "sha256": "9ec4004d8be9524dbafda4f3451a698d07dec43043228827d900100d89574583",
+      "sourceSha256": "9ec4004d8be9524dbafda4f3451a698d07dec43043228827d900100d89574583",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/gas_policy_baseline_summary.json",
+      "sizeBytes": 4115,
+      "sha256": "338404f389333361e6d50979caca8ebea4f58e1cb37de2a0e44a32b995443828",
+      "sourceSha256": "338404f389333361e6d50979caca8ebea4f58e1cb37de2a0e44a32b995443828",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/gas_policy_comparisons.json",
+      "sizeBytes": 794,
+      "sha256": "248cfae4d577d351787b6a7f61f676d74d031bbee4510f635edf408531c1b756",
+      "sourceSha256": "248cfae4d577d351787b6a7f61f676d74d031bbee4510f635edf408531c1b756",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/local_gas_raw.jsonl",
+      "sizeBytes": 21631,
+      "sha256": "a68d358ee838a26d034872a62ffd09cea77863a02da45ac1f58063b7ad07a479",
+      "sourceSha256": "a68d358ee838a26d034872a62ffd09cea77863a02da45ac1f58063b7ad07a479",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/local_gas_summary.csv",
+      "sizeBytes": 1608,
+      "sha256": "5ed7a0da328b7eff7f7567063853632f7c1918a01e156f10209cc698b690db8c",
+      "sourceSha256": "5ed7a0da328b7eff7f7567063853632f7c1918a01e156f10209cc698b690db8c",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "fault-gas/local_gas_summary.json",
+      "sizeBytes": 3692,
+      "sha256": "f232ebcfb47eb661f8d375403323f888455e9c98dbe28e048f39e9c7a51236d3",
+      "sourceSha256": "f232ebcfb47eb661f8d375403323f888455e9c98dbe28e048f39e9c7a51236d3",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "llm/campaign_config.json",
+      "sizeBytes": 490,
+      "sha256": "ed01bc1c5449081812ba4722b2ae2fb832622fe7d0a4997fa472eb23111c536d",
+      "sourceSha256": "ed01bc1c5449081812ba4722b2ae2fb832622fe7d0a4997fa472eb23111c536d",
+      "transformation": "Byte-identical configuration from the frozen source archive."
+    },
+    {
+      "path": "llm/campaign_metadata.json",
+      "sizeBytes": 528,
+      "sha256": "8706f831076ebb978e8b4a939c2b1bbd11cdd4417bf150eb69153a0976bd76e4",
+      "sourceSha256": "7198ae9490624cee830d1c14b8a9b8b985aeeb01aee9607b47c9c237db666e1a",
+      "transformation": "Allowlisted campaign, runtime, hardware, configuration hash, and public-chain metadata; omitted process diagnostics and unrelated file inventories."
+    },
+    {
+      "path": "llm/real_llm_raw.jsonl",
+      "sizeBytes": 10483,
+      "sha256": "bbd3690196ae4e18af5c2aade6348da85642cf9058561b86310782a5cea35a3f",
+      "sourceSha256": "8e2cee24cc0912ec18e6aebe89ddd84d82606d18d9e5d674f799e9038c8448e2",
+      "transformation": "Removed API responseId only; all measurements, sample order and warm-ups retained."
+    },
+    {
+      "path": "llm/real_llm_summary.csv",
+      "sizeBytes": 2767,
+      "sha256": "086f90d08e33bf0dab5b1c335add08cbbf384357914bd3176ec76cf207bfd02b",
+      "sourceSha256": "086f90d08e33bf0dab5b1c335add08cbbf384357914bd3176ec76cf207bfd02b",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "llm/real_llm_summary.json",
+      "sizeBytes": 5423,
+      "sha256": "44fb5be419b738d48d9e1d70ccc3f8f6006cd2063a7e308224b3400bf9b9664f",
+      "sourceSha256": "44fb5be419b738d48d9e1d70ccc3f8f6006cd2063a7e308224b3400bf9b9664f",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "local/batch_policy_summary.csv",
+      "sizeBytes": 6063,
+      "sha256": "a7e39003923daaa842458dca8a97da1439ed3549864e15de381f546078c98bc2",
+      "sourceSha256": "a7e39003923daaa842458dca8a97da1439ed3549864e15de381f546078c98bc2",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "local/batch_policy_summary.json",
+      "sizeBytes": 11730,
+      "sha256": "543e078815a09341b5aa0dc9b0aaec39e22007fac5209ac79e58375c06aaf1f2",
+      "sourceSha256": "543e078815a09341b5aa0dc9b0aaec39e22007fac5209ac79e58375c06aaf1f2",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "local/campaign_config.json",
+      "sizeBytes": 1066,
+      "sha256": "0390106a173bff92f8da1cdb3eda22bb6fc30c7e56632ee4b139bb16906b8229",
+      "sourceSha256": "0390106a173bff92f8da1cdb3eda22bb6fc30c7e56632ee4b139bb16906b8229",
+      "transformation": "Byte-identical configuration from the frozen source archive."
+    },
+    {
+      "path": "local/campaign_metadata.json",
+      "sizeBytes": 1005,
+      "sha256": "5ae49bb518fc67d4f1902156123448b6b1185f94462074de956d6e2664fc0f6f",
+      "sourceSha256": "153acec18b85ac8ec73b41bb2626b9116d3233cff4097d352504ed6dd99a0a9b",
+      "transformation": "Allowlisted campaign, runtime, hardware, configuration hash, and public-chain metadata; omitted process diagnostics and unrelated file inventories."
+    },
+    {
+      "path": "local/protocol_raw.jsonl",
+      "sizeBytes": 734248,
+      "sha256": "432d4cfa005231ac7f5886e127be5de3fa031def7bd7c9553fc908efcb525439",
+      "sourceSha256": "432d4cfa005231ac7f5886e127be5de3fa031def7bd7c9553fc908efcb525439",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "local/protocol_summary.csv",
+      "sizeBytes": 31973,
+      "sha256": "f82c7e174668546fff4668437f8aff532d3a1b8ee7f425e55e6746ef31030413",
+      "sourceSha256": "f82c7e174668546fff4668437f8aff532d3a1b8ee7f425e55e6746ef31030413",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "local/protocol_summary.json",
+      "sizeBytes": 65931,
+      "sha256": "f8451893054b1a06a351a177388901bac93370b9a6f51f610a932f05c06217da",
+      "sourceSha256": "f8451893054b1a06a351a177388901bac93370b9a6f51f610a932f05c06217da",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "local/zk_raw.jsonl",
+      "sizeBytes": 12197,
+      "sha256": "4b7f766356439258ef38519239b4c8358c3bb196f0ffa48b414dce411174fbb9",
+      "sourceSha256": "4b7f766356439258ef38519239b4c8358c3bb196f0ffa48b414dce411174fbb9",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "local/zk_summary.csv",
+      "sizeBytes": 3512,
+      "sha256": "7713ac1119c3ca5c47e9221f6a0df164f0c28740f7a837930ceb9f32272503f8",
+      "sourceSha256": "7713ac1119c3ca5c47e9221f6a0df164f0c28740f7a837930ceb9f32272503f8",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "local/zk_summary.json",
+      "sizeBytes": 6873,
+      "sha256": "c7b57cc755e44bad87ed3d5d22695b839b9fd14b870053ed3b3a8c515adf888b",
+      "sourceSha256": "c7b57cc755e44bad87ed3d5d22695b839b9fd14b870053ed3b3a8c515adf888b",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "README.md",
+      "sizeBytes": 10316,
+      "sha256": "75680a01fb1a2c7b60303afdd3a4fc53e8a1e38340fd60b1c40b194b7654249a",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/accounting-trace.jsonl",
+      "sizeBytes": 1769859,
+      "sha256": "7034ca11549c4cfa53063af8750070933f40b1c344099e84231bf487a379444b",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/archive-provenance.json",
+      "sizeBytes": 609,
+      "sha256": "06168115c9d40c5052b605fcce03e0133e5a0e5700d6075566ea26a547b3dacd",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/batch-acceptance.jsonl",
+      "sizeBytes": 389211,
+      "sha256": "1ca585a304c6e22b0b4b78893b84448263bc819d4bade2f1b0cfe5a8e827ad2d",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/calls.jsonl",
+      "sizeBytes": 26314698,
+      "sha256": "c6982c0b62e269c67f187944e37eaafe6f461d46a545906c18fbe296c591e872",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/manifest.json",
+      "sizeBytes": 2682,
+      "sha256": "539841a51600fea5792c48fc37c7ebd0533cfb1dc7c4e2d0f8d2ff28c9e304d6",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/protocol.sqlite.gz",
+      "sizeBytes": 7316616,
+      "sha256": "7f63a5980b24b7711454680634205c84dc4c1fe28b3628b2f213cf6e79821e3f",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/rejections.jsonl",
+      "sizeBytes": 1548651,
+      "sha256": "7fa006d467436e18a5f03bcd1a820d0ad6224f53d44d3f415210012ec1e4a257",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/settlements.jsonl",
+      "sizeBytes": 2160440,
+      "sha256": "f03b6b2bca03935a35ecb6623fc7b748ac3df0fa2cdf2298d6a1ee9a1434c9cf",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/status.json",
+      "sizeBytes": 108,
+      "sha256": "f515a06bee27daedd4a613ce03016bc92048f8845080eb5aba002bea1161148b",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/summary.json",
+      "sizeBytes": 6592,
+      "sha256": "f025251fd36aa98e2f276cb10661e1a7e5cb313e1c35e633b1b63c8f9c4e3613",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "task-workflow/tasks.jsonl",
+      "sizeBytes": 903415,
+      "sha256": "e5eab354eb413074a80b8923d6240cd688a92e673ba399f8f01fd567e9a184c9",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "testnet/campaign_config.json",
+      "sizeBytes": 521,
+      "sha256": "dbeeca59f895f751ba345adce1050fc000f24490b9b5453bd3d4d68be4ade3ea",
+      "sourceSha256": "dbeeca59f895f751ba345adce1050fc000f24490b9b5453bd3d4d68be4ade3ea",
+      "transformation": "Byte-identical configuration from the frozen source archive."
+    },
+    {
+      "path": "testnet/campaign_metadata.json",
+      "sizeBytes": 963,
+      "sha256": "39b5796c424d39beba9c24b6e9c9991196ecf3dca4d45150b65e89d86ea5cab7",
+      "sourceSha256": "7ab7e707c2d705e41dd910f8c652fd9e719e36193a52b6c146430e65e9813e35",
+      "transformation": "Allowlisted campaign, runtime, hardware, configuration hash, and public-chain metadata; omitted process diagnostics and unrelated file inventories."
+    },
+    {
+      "path": "testnet/testnet_v2_raw.jsonl",
+      "sizeBytes": 6013,
+      "sha256": "5d3f0c877c09012f818f72d815cbd403e238bd16b8b24b37485d63d6a6c8640c",
+      "sourceSha256": "5d3f0c877c09012f818f72d815cbd403e238bd16b8b24b37485d63d6a6c8640c",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "testnet/testnet_v2_summary.csv",
+      "sizeBytes": 2526,
+      "sha256": "dd295b5c16e32de9ae3486a6a025ce949433d13f406a1479ba789106dc96c577",
+      "sourceSha256": "dd295b5c16e32de9ae3486a6a025ce949433d13f406a1479ba789106dc96c577",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "testnet/testnet_v2_summary.json",
+      "sizeBytes": 4604,
+      "sha256": "ba81a7d87757c9f381c18b5c541aa2311edfce3c507f0e4d5cbe4a842507bbe2",
+      "sourceSha256": "ba81a7d87757c9f381c18b5c541aa2311edfce3c507f0e4d5cbe4a842507bbe2",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "testnet/withdrawal_public_testnet.jsonl",
+      "sizeBytes": 4028,
+      "sha256": "5b996dc3ad3944942ebdc475ed17caf3fa2c632985fb375af9c431abd61bcafe",
+      "sourceSha256": "5b996dc3ad3944942ebdc475ed17caf3fa2c632985fb375af9c431abd61bcafe",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "verification/circuit-boundaries.json",
+      "sizeBytes": 951,
+      "sha256": "4397fc0123353160c32466c8d94ac09e018d6ab129d4b811fe8f2516edaa4b11",
+      "sourceSha256": "4397fc0123353160c32466c8d94ac09e018d6ab129d4b811fe8f2516edaa4b11",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "verification/formal-verification.json",
+      "sizeBytes": 2551,
+      "sha256": "3ae90959b0db8020698ce41eb14f55dabceab105147685b38393a9f58a8eb32f",
+      "sourceSha256": "3ae90959b0db8020698ce41eb14f55dabceab105147685b38393a9f58a8eb32f",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "verification/proof-to-settlement.json",
+      "sizeBytes": 365,
+      "sha256": "14dc050cb0eb177198b7af7ba1972f1fa211580b2073c7ef252c68b46b63a5dd",
+      "sourceSha256": "14dc050cb0eb177198b7af7ba1972f1fa211580b2073c7ef252c68b46b63a5dd",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "verification/regression-results.json",
+      "sizeBytes": 5538,
+      "sha256": "e56ad23c9e19de6d0ebd08b2c9a4481bc87ceb4d083764a13558d5f5dcc64b3d",
+      "sourceSha256": "5156debcd5412baa1594d36b8d489c63cc50b35267b7b6c30c53d11d5481c51d",
+      "transformation": "Extracted the 75 successful test names; omitted console diagnostics and local environment paths."
+    },
+    {
+      "path": "wan/all-raw.jsonl",
+      "sizeBytes": 2432022,
+      "sha256": "99c09885a78e967a8ee26275b1cc459d2e5a9ef5758d8c5561c8f0e9973ac5d7",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/complete-measurement-windows.json",
+      "sizeBytes": 10669,
+      "sha256": "af5970abcbbdae9818c7f000ab82c80bed5f45b7b60e182e1173ae19c0d3c5d3",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/manifest.json",
+      "sizeBytes": 5074,
+      "sha256": "bf17e858be1b948e16af6092b7fba6137065e81707cd9382bf2296a1d1747122",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c1-raw.jsonl",
+      "sizeBytes": 101116,
+      "sha256": "83f71e5787b6c3ea7f292f603866cb04d1a96a8c4cb347a96ca14a3663f88699",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c1-summary.json",
+      "sizeBytes": 5620,
+      "sha256": "a765f6243b24d3cb6bdae8504916f98b1bc1cb682d2af32cc21c5b8c8db52c7b",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c1-timeline.jsonl",
+      "sizeBytes": 30729,
+      "sha256": "f8bbaccd43174acde76c011c371828db8dd50d701ff932dda0fc69bdee87f6f2",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c16-raw.jsonl",
+      "sizeBytes": 101425,
+      "sha256": "89b25c20ef1ab7c472c45507849dc77b72ff1ce511a6a790221e9d4a2f6d56c1",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c16-summary.json",
+      "sizeBytes": 5623,
+      "sha256": "7bbd6233b8f0dcce9ee0ca2ec4aea404b3cf4a13fdeecdf9a3e0bb15812c7a5c",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c16-timeline.jsonl",
+      "sizeBytes": 30787,
+      "sha256": "0ddf6d008c83011c30ffae3ac8bcf41aed4c9050fb0842f62bef9164751da963",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c4-raw.jsonl",
+      "sizeBytes": 100973,
+      "sha256": "06c9a0a7bb7bee0f7629637344a77441a46ae556df4534f7646a050a4c495a62",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c4-summary.json",
+      "sizeBytes": 5607,
+      "sha256": "2e669c8c7df2b95a9d6c1f015aac45c21c1d13aa9995ff161ad2a48c4f30cbf1",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c4-timeline.jsonl",
+      "sizeBytes": 30745,
+      "sha256": "abec150f01e2f58b13ea2ebb528d9a36b2af7cee2d7ad9a76c31f500212f7d26",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c8-raw.jsonl",
+      "sizeBytes": 101119,
+      "sha256": "455dba8c3da993e8217b67bf03780076eae506f09f00226d18f7f9091a22e54f",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c8-summary.json",
+      "sizeBytes": 5617,
+      "sha256": "dd4ca31c453edc725eec2f269fb2a8940b509735a2213e4a566b57c398ee20aa",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-local-c8-timeline.jsonl",
+      "sizeBytes": 30747,
+      "sha256": "a80bb2759969bc8d12a6f2c050ecfb7c6e8805e262a7ab5e5597c11c95381d66",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c1-raw.jsonl",
+      "sizeBytes": 101487,
+      "sha256": "3b3ea4a17a1c81a514f759d13382452e27e9b41bd8c477bfc2c79dcacc690604",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c1-summary.json",
+      "sizeBytes": 5627,
+      "sha256": "29bce548014c9e70c0964a8a744c22cbbe4a697badec12ca32214e89b9c562ed",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c1-timeline.jsonl",
+      "sizeBytes": 30873,
+      "sha256": "82b03f6bf50bb0e1a1cdb185a42702604abcb6a5f183fbfdf4e30965be21ee09",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c16-raw.jsonl",
+      "sizeBytes": 101677,
+      "sha256": "3d09c4b5875d248772c4c889193ae4ec62a808f6559342a17f85774f8f64d4c8",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c16-summary.json",
+      "sizeBytes": 5615,
+      "sha256": "85c245ac29ba377ed4aeab6ec0ff2dafd1de8c12dd43406ae77857c7d9dbe250",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c16-timeline.jsonl",
+      "sizeBytes": 30893,
+      "sha256": "55bf706ff878fb67049361ac15d8f342228b5d5fca452d153f1f905c2fa95253",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c4-raw.jsonl",
+      "sizeBytes": 101437,
+      "sha256": "af40207ca8050f5d4da4cc4735cb8f1bf5a5c2f09a6e27aea44a10714dc7e88b",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c4-summary.json",
+      "sizeBytes": 5612,
+      "sha256": "a5aec3af93d013b8c72b4f37d0435f8b1e7402bfc079ff3617b5bb0e384b3037",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c4-timeline.jsonl",
+      "sizeBytes": 30842,
+      "sha256": "c10bbb317f664aae3845321a730acb07a1c7dcf499b2d73171505eb592b0351c",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c8-raw.jsonl",
+      "sizeBytes": 101357,
+      "sha256": "161df956343c3ed2194d623abdae301fd2f62dc437cfbe1e74192604a91ebbc2",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c8-summary.json",
+      "sizeBytes": 5606,
+      "sha256": "33ee56f200e8bd354b02c27c1fee918392516e024906394ad88140a9293185b5",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r1-remote-c8-timeline.jsonl",
+      "sizeBytes": 30864,
+      "sha256": "6428f1824568cd882310bced1e5051f1c239545d1c3901629952162f8aa0c511",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c1-raw.jsonl",
+      "sizeBytes": 101210,
+      "sha256": "6c159d9637477916e89c6a72ab7196450a9e659ae9f47d20e429016ac7893881",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c1-summary.json",
+      "sizeBytes": 5628,
+      "sha256": "5a08f5931f1153b4976b177263e9d400500ceba5a967db100864a67ea7659cf3",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c1-timeline.jsonl",
+      "sizeBytes": 30739,
+      "sha256": "bc76390224da119259fd0245ac81d20481ed5c444bb470c62dfe41168a6cb02a",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c16-raw.jsonl",
+      "sizeBytes": 101418,
+      "sha256": "ce9308f12bdbab23f3aa0e66b049986a69c362affb0b0726693ad4b719b70907",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c16-summary.json",
+      "sizeBytes": 5633,
+      "sha256": "6f47cfa810742af7d952fd9d13596110fa4116c1d3f96b99a4d44a728889a501",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c16-timeline.jsonl",
+      "sizeBytes": 30784,
+      "sha256": "b9d8cd1929158593a2b251698b06147e9eacaa55da41eb3e0fd1725fd1241511",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c4-raw.jsonl",
+      "sizeBytes": 100983,
+      "sha256": "d890e9bfdefeda7735bb8dfc1109574d2330853224b7684df4c5fc5c6b802b33",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c4-summary.json",
+      "sizeBytes": 5607,
+      "sha256": "ef91a7107241038d09b5504de9c299068ea57383d3b4c9747bcff4744bf606e7",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c4-timeline.jsonl",
+      "sizeBytes": 30753,
+      "sha256": "b150883ab1a64b2acde6464cbc02cba7995b3fac0a0d4f71c5a218d1fb674872",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c8-raw.jsonl",
+      "sizeBytes": 101185,
+      "sha256": "4f4468f2e425e4617a0892916468503638066b487ecb5ae07dbe42abea188350",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c8-summary.json",
+      "sizeBytes": 5619,
+      "sha256": "12602e9fcb0830202f7e4d3ebe87c845b65f0fbd4a76d2c80e0c82274baab1af",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-local-c8-timeline.jsonl",
+      "sizeBytes": 30756,
+      "sha256": "8507e4011723acc1647aaeaeedd9b79da362d3c89c1f5eaa516a36f4277c466a",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c1-raw.jsonl",
+      "sizeBytes": 101427,
+      "sha256": "1f77c74377f82629606ba5eed4f5744b84e625036ae9d4fa3635101cc4f9518f",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c1-summary.json",
+      "sizeBytes": 5632,
+      "sha256": "403d212d3e0a0e4dcedc951be8975e6812f543b7c36f01a319a5c2ee11fa6639",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c1-timeline.jsonl",
+      "sizeBytes": 30847,
+      "sha256": "24ebcabeac93d04f647650c96e638e41ac773b9264fd8fe7111c8ca84f0338c2",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c16-raw.jsonl",
+      "sizeBytes": 101735,
+      "sha256": "d14722bce5e4761ec7afdcb5f21bcd8270b1c0bd3e471a46da7f145d1d8e5c75",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c16-summary.json",
+      "sizeBytes": 5620,
+      "sha256": "ffebb421f9801121f82763d4217a300d910898786f766ef919ca2c826c500a65",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c16-timeline.jsonl",
+      "sizeBytes": 30894,
+      "sha256": "4ddca15d3dc029f5fee86b4ab8137a80bbb1383c8a0df8dd94577f1521b34327",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c4-raw.jsonl",
+      "sizeBytes": 101394,
+      "sha256": "a75b6ffdc31108b29062581ae5c62f7f6f8fe493a558406782fca09642f4cd4a",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c4-summary.json",
+      "sizeBytes": 5623,
+      "sha256": "e2d687e0c0e2466dedb927a2c93e0e62c27586a47eb6b9686afdbb9545154fd6",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c4-timeline.jsonl",
+      "sizeBytes": 30851,
+      "sha256": "65e40fc5b7abb4bcb93cfc5b7c8cd6ade5995df72be2ce068c45103630ed5911",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c8-raw.jsonl",
+      "sizeBytes": 101402,
+      "sha256": "6930e30e582fa61cde2f1dbdea659cf5b43e6c95b5235c3de008e4771169b940",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c8-summary.json",
+      "sizeBytes": 5618,
+      "sha256": "4cd6814cd01cbd2f9acf4da4934afab1fd4434ffe21fc80a04826f4ee094e2a6",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r2-remote-c8-timeline.jsonl",
+      "sizeBytes": 30853,
+      "sha256": "8fb50335596fe1b6ddf590bd241ec0a5df25a575231c8624b9d2dc4aa07ce931",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c1-raw.jsonl",
+      "sizeBytes": 101126,
+      "sha256": "c7cb733e9271724ba6ad44b3b9973ae755c9f4f905bb39f2e97d5760b4c79d52",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c1-summary.json",
+      "sizeBytes": 5608,
+      "sha256": "e6d49d7b2d364771cb8c4bccdf31eb023a78e57e821f64c549f905aebb69237c",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c1-timeline.jsonl",
+      "sizeBytes": 30754,
+      "sha256": "ad10d3a646215fbe553c702a4b7d60a38bbf20e10f3cd72d25ca730786b26865",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c16-raw.jsonl",
+      "sizeBytes": 101402,
+      "sha256": "9b28256c9114d42f5e3713a4bdc5c46cf77a926767bccae3513057c7af35659e",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c16-summary.json",
+      "sizeBytes": 5622,
+      "sha256": "61e6326402571b029426659883c1b08687bf72b1b336e28fa454c2797d01edb2",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c16-timeline.jsonl",
+      "sizeBytes": 30790,
+      "sha256": "eab27dc4ef2c8b89155b40f0f7a011b1a835c9898f4b8aba340e124c520ecf4c",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c4-raw.jsonl",
+      "sizeBytes": 101022,
+      "sha256": "3f64161eab4f4a06291f98592372ed058b198a56ed7e80b44cd5601b4adfda61",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c4-summary.json",
+      "sizeBytes": 5615,
+      "sha256": "b7ca97825350d6b2520a9b00f81aecae5e5eb0b277109b01609187a734d7cf5b",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c4-timeline.jsonl",
+      "sizeBytes": 30760,
+      "sha256": "23d137b610c0184b3b3628b4e902c6dde6a97064c3fb44b6b549c8f50dc5cb27",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c8-raw.jsonl",
+      "sizeBytes": 101145,
+      "sha256": "147a81e4f1cc5ad3f1b54f3308f1a9ec4a5d20b66b49f05cb04acdd60840a59f",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c8-summary.json",
+      "sizeBytes": 5615,
+      "sha256": "27ebbd06e36d266d23e0ba28d7d6b87c94f4b132a747c2ce68715263267fc7ba",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-local-c8-timeline.jsonl",
+      "sizeBytes": 30753,
+      "sha256": "f23d406ffd519d2cc42ce757c3922d5d7cb64e6a6550dc6966baa1d299bf3599",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c1-raw.jsonl",
+      "sizeBytes": 101452,
+      "sha256": "18070892f361f9df78594c74f69637eb923a50e8be25a0c2ef570dec05a80a02",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c1-summary.json",
+      "sizeBytes": 5618,
+      "sha256": "8522c4af08c132ebaaa585b1474b9d786549d960bf87f37dba1260bcb64d6555",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c1-timeline.jsonl",
+      "sizeBytes": 30867,
+      "sha256": "8ba920b365aa610d074bad033900d03def281e05e4239216953dc9235baf37d9",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c16-raw.jsonl",
+      "sizeBytes": 101733,
+      "sha256": "0647e9f42ed451e918614c89309f9b91d69fc271676fdfbcb8cdb82f6cd992a4",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c16-summary.json",
+      "sizeBytes": 5630,
+      "sha256": "72163eed7c5e36d03240f60f7f0d00fe3a343122bcd3618f9d18f2c2f318143b",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c16-timeline.jsonl",
+      "sizeBytes": 30907,
+      "sha256": "3563307a6eabeb4d331a693d3657dfc57d85bd00adb20034e52fda35d983b2c7",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c4-raw.jsonl",
+      "sizeBytes": 101409,
+      "sha256": "d36b43c331af271cc6bb2bc08c71196241593dcaafaaf91c2cdaafc4dc25dde4",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c4-summary.json",
+      "sizeBytes": 5623,
+      "sha256": "753dfa394f37485b456ef6389e623d27627274e778fd39297d37a5530a42fd45",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c4-timeline.jsonl",
+      "sizeBytes": 30853,
+      "sha256": "3e253ff46ffa31cddb581dcb5986b06b8af12b65209a348edb846c132f7c6a14",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c8-raw.jsonl",
+      "sizeBytes": 101388,
+      "sha256": "84335af2f404aa39ed5cf2c2ac9e5289e3e05fadf06b20a5791ebe1d4b6925f6",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c8-summary.json",
+      "sizeBytes": 5631,
+      "sha256": "93facb8005dba37b75fb5eaa34195aeaea8d606db08b89dcb5611101f605f0a1",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/r3-remote-c8-timeline.jsonl",
+      "sizeBytes": 30866,
+      "sha256": "82683de6fc030c70f976702d5990a14b6e09ec3afd109ba3f3a784ffdc35fa90",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan/summary.json",
+      "sizeBytes": 145264,
+      "sha256": "50799cf883254a1af7ceee28b39e760f8e829788405600774976b88742e84617",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan-recovery/provenance.json",
+      "sizeBytes": 417,
+      "sha256": "33ae4930f0893141ae48ecf508e9ca59df3d924a77be9b13232bfa883067e176",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan-recovery/summary.json",
+      "sizeBytes": 2633,
+      "sha256": "4a0a51733cfb3b5498218ad95a9a38e6120497bbbf0f67b7a6e6cf091307989f",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    },
+    {
+      "path": "wan-recovery/wan_recovery_raw.jsonl",
+      "sizeBytes": 8220,
+      "sha256": "f9582cafc7dcfa997669aebd2ceb5164468f303872f066a8b6c15c5eaf172793",
+      "transformation": "Retained current-manuscript archive; see dataset README for extraction, connection-metadata redaction, and deterministic SQLite compression."
+    }
+  ]
+}

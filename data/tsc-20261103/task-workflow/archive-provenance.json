@@ -1,0 +1,17 @@
+{
+  "database": {
+    "path": "protocol.sqlite.gz",
+    "uncompressedBytes": 27021312,
+    "uncompressedSha256": "5e44d2e72d6666b349795b3d6bdac2ace8b2777e463a35d649f01b7ca4925d2c",
+    "sourceWalBytes": 0,
+    "sqliteQuickCheck": "ok",
+    "description": "Complete durable-state snapshot from the adopted 600-task local-EVM run. Delivery-key openings are protocol evidence, not wallet signing keys."
+  },
+  "includedJsonlRecordsUnchanged": true,
+  "omittedAuxiliaryFiles": [
+    "protocol.sqlite-shm",
+    "protocol.sqlite-wal",
+    "hardhat-local.config.cjs",
+    "output-sha256.json"
+  ]
+}

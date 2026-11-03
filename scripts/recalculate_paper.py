@@ -10,8 +10,11 @@ import json
 import math
 from pathlib import Path
 
+from audit_task_workflow import audit_task_workflow
+from audit_wan_campaign import audit_wan_campaign
+
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / 'data/measurement-20261015'
+DATA = ROOT / 'data/tsc-20261103'
 
 
 def read(name):
@@ -127,7 +130,6 @@ def audit():
         ('fault-gas/local_gas', ['operation']),
         ('fault-gas/gas_policy_baseline', ['policy', 'realCount']),
         ('llm/real_llm', ['scenario', 'settingId', 'ablation']),
-        ('wan/wan', ['recordType', 'transportMode', 'concurrency']),
         ('testnet/testnet_v2', []),
     ]
     raw, summaries, counts = {}, {}, {}
@@ -154,29 +156,18 @@ def audit():
         local_windows.append({'settingId': expected['settingId'], 'measuredElapsedMs': expected['measuredElapsedMs'],
                               'measuredSamples': len(selected), 'goodput': goodput})
 
-    wan_windows = []
-    for expected in summaries['wan/wan']:
-        if expected['metric'] != 'throughputOpsPerSecond':
-            continue
-        selected = [r for r in measured(raw['wan/wan']) if r['recordType'] == expected['recordType']
-                    and r['transportMode'] == expected['transportMode'] and r['concurrency'] == expected['concurrency']]
-        c = expected['concurrency']
-        equal(len(selected), expected['count'], 'WAN completed count')
-        chunks = []
-        for offset in range(0, len(selected), c):
-            group = selected[offset:offset + c]
-            assert len({r['chunkElapsedMs'] for r in group}) == 1, 'Inconsistent WAN chunk timer'
-            chunks.append(group[0]['chunkElapsedMs'])
-        chunk_sum = sum(chunks)
-        # The aggregate is retained; its original timer was not serialized.
-        # This implied duration is an algebraic consistency check, not a recovered observation.
-        implied = len(selected) * 1000 / expected['mean']
-        assert implied >= chunk_sum, 'Aggregate duration cannot be shorter than its serial chunks'
-        wan_windows.append({'transportMode': expected['transportMode'], 'concurrency': c,
-                            'completedCalls': len(selected), 'retainedGoodput': expected['mean'],
-                            'sumRecordedChunkMs': chunk_sum, 'impliedWindowMs': implied,
-                            'impliedInterChunkOverheadMs': implied - chunk_sum,
-                            'independentWindowRecalculationAvailable': False})
+    wan = audit_wan_campaign(DATA / 'wan', stats, equal)
+    counts['wan/protocol'] = wan['sampleCounts']
+    summary_count += wan['recalculatedSummaryRows']
+    recovery_raw = rows('wan-recovery/wan_recovery_raw.jsonl')
+    recovery_summary = read('wan-recovery/summary.json')
+    assert all(r['recordType'] == 'wan_provider_recovery' for r in recovery_raw)
+    assert len(recovery_raw) == 22 and len(measured(recovery_raw)) == 20
+    assert all(r['outcome'] == 'success' for r in recovery_raw)
+    summary_count += verify_summary(recovery_raw, recovery_summary, ['recordType', 'transportMode'])
+    counts['wan-recovery'] = {'total': 22, 'measured': 20, 'warmups': 2}
+    workflow = audit_task_workflow(DATA / 'task-workflow')
+    counts['task-workflow'] = {'total': workflow['tasks'], 'measured': workflow['tasks'], 'warmups': 0}
 
     batch = read('local/batch_policy_summary.json')
     verify_batch_policy(read('local/campaign_config.json'), batch)
@@ -221,7 +212,25 @@ def audit():
     withdrawal = rows('testnet/withdrawal_public_testnet.jsonl')
     assert withdrawal[-1]['rootReleased'] and withdrawal[-1]['escrowRestored'] and withdrawal[-1]['protectedBudgetRestored']
 
-    # Compact data for the two measured figures; the paper preserves its vector artwork.
+    # Data for Figures 2--4 and Tables I--V in the current TSC manuscript.
+    table1 = []
+    for title, name, unit in [
+        ('Local protocol', 'local/protocol', 'samples'),
+        ('Groth16 proving', 'local/zk', 'proofs'),
+        ('Relay recovery', 'fault-gas/fault', 'rounds'),
+        ('Paid model calls', 'llm/real_llm', 'calls'),
+        ('WAN protocol', 'wan/protocol', 'calls'),
+        ('WAN recovery', 'wan-recovery', 'rounds'),
+        ('Public testnets', 'testnet/testnet_v2', 'rounds'),
+        ('Task workflows', 'task-workflow', 'tasks')]:
+        count = counts[name]
+        table1.append({'campaign': title, 'retained': count['measured'], 'unit': unit,
+                       'warmups': None if name == 'task-workflow' else count['warmups']})
+    table1.insert(1, {'campaign': 'Batch simulation', 'retained': sum(r['arrivals'] for r in batch),
+                      'unit': 'arrivals', 'warmups': None})
+    table1.insert(4, {'campaign': 'Gas components', 'retained': len({r['round'] for r in policies}),
+                      'unit': 'repetitions', 'warmups': None})
+    assert [r['retained'] for r in table1] == [1090, 90000, 40, 400, 16, 10, 2400, 20, 5, 600]
     figure2 = []
     for setting in ['authorization_only', 'committed_delivery', 'fair_release']:
         s = one(summaries['local/protocol'], settingId='ablation-' + setting, metric='totalMs')
@@ -229,13 +238,8 @@ def audit():
     for metric in ['modelRequestMs', 'totalMs']:
         s = one(summaries['llm/real_llm'], metric=metric)
         figure2.append({'panel': 'b', 'setting': metric, 'meanMs': s['mean'], 'p95Ms': s['p95']})
-    figure3 = []
-    for mode in ['local', 'remote']:
-        for c in [1, 4, 8, 16]:
-            s = one(summaries['wan/wan'], transportMode=mode, concurrency=c, metric='totalMs')
-            t = one(summaries['wan/wan'], transportMode=mode, concurrency=c, metric='throughputOpsPerSecond')
-            figure3.append({'placement': mode, 'concurrency': c, 'meanMs': s['mean'], 'p95Ms': s['p95'], 'goodput': t['mean']})
-    table5 = []
+    figure3 = wan['figure3']
+    table4 = []
     for label, time_metric, gas_metric in [
         ('Groth16 proof generation', 'proveMs', None),
         ('Amoy proof registration', 'registerBatchFinalityMs', 'registerBatchGas'),
@@ -243,22 +247,23 @@ def audit():
         ('Sepolia receipt settlement', 'settleFinalityMs', 'settleGas'),
         ('Proof-to-settlement path', 'endToEndMs', None)]:
         s = stats([r[time_metric] / 1000 for r in testnet])
-        table5.append({'stage': label, 'meanS': s['mean'], 'p95S': s['p95'],
+        table4.append({'stage': label, 'meanS': s['mean'], 'p95S': s['p95'],
                        'meanGas': None if gas_metric is None else stats([r[gas_metric] for r in testnet])['mean']})
-    table5.insert(4, {'stage': 'Submission and coordination residual', 'meanS': residual_stats['mean'],
+    table4.insert(4, {'stage': 'Submission and coordination residual', 'meanS': residual_stats['mean'],
                       'p95S': residual_stats['p95'], 'meanGas': None})
 
     return {'status': 'PASS', 'hashVerifiedFiles': len(manifest['files']), 'recalculatedSummaryRows': summary_count,
             'sampleCounts': counts, 'batchPolicySettings': len(batch), 'simulatedArrivals': sum(r['arrivals'] for r in batch),
-            'table3': summaries['local/zk'], 'table4': summaries['fault-gas/gas_policy_baseline'],
-            'table5': table5, 'table5PerRoundResidual': residual, 'table5ResidualStatsSeconds': residual_stats,
-            'table6': summaries['fault-gas/fault'], 'figure2': figure2, 'figure3': figure3,
-            'localMeasurementWindows': local_windows, 'wanAggregateAudit': wan_windows,
+            'table1': table1, 'table2': summaries['local/zk'], 'table3': summaries['fault-gas/gas_policy_baseline'],
+            'table4': table4, 'table4PerRoundResidual': residual, 'table4ResidualStatsSeconds': residual_stats,
+            'table5': summaries['fault-gas/fault'], 'figure2': figure2, 'figure3': figure3,
+            'figure4': workflow['figure4'], 'taskWorkflow': workflow,
+            'localMeasurementWindows': local_windows, 'wanMeasurementWindows': wan['windows'],
+            'wanGoodputDefinition': wan['goodputDefinition'], 'wanProviderRecovery': recovery_summary,
             'limitations': [
-                'WAN goodput is a retained aggregate. The original complete-window timer was not serialized; its exact value cannot be independently recalculated from per-call latencies.',
-                'Legacy throughput percentile/CI fields repeat one aggregate and are not distributions or confidence intervals. WAN count is the completed-call count.',
+                'Legacy local throughput percentile/CI fields repeat one aggregate and are not distributions or confidence intervals. Current WAN goodput is recalculated from 24 retained complete-window timers.',
                 'The original ci95 fields use mean +/- 1.96 * sample_sd / sqrt(n); small-sample coverage is not established. The paper reports selected descriptive percentiles.',
-                'The Table 5 residual is derived per round; its constituent RPC and coordination operations were not individually timed.',
+                'The Table IV residual is derived per round; its constituent RPC and coordination operations were not individually timed.',
                 'Verification files preserve historical outcomes, not a fresh execution or an independent audit.'
             ]}
 
@@ -274,8 +279,8 @@ def main():
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: report[k] for k in ['status', 'hashVerifiedFiles', 'recalculatedSummaryRows',
-                                           'sampleCounts', 'batchPolicySettings', 'simulatedArrivals', 'table5']}))
-    print('NOTE: WAN goodput uses retained aggregates; see data/measurement-20261015/README.md.')
+                                           'sampleCounts', 'batchPolicySettings', 'simulatedArrivals', 'table4']}))
+    print('NOTE: Offline recalculation only; no experiments or chain calls are executed. See data/tsc-20261103/README.md.')
 
 
 if __name__ == '__main__':

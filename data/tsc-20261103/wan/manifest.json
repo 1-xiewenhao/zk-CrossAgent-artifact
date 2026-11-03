@@ -1,0 +1,187 @@
+{
+  "createdAt": "2026-11-02T04:01:48.759Z",
+  "sourceCampaignId": "fgcs-submission-20261015-wan-key-static",
+  "sourceConfigSha256": "a99d1e3887cc4ebd99e681087fba945f1508822a9f4334ea804017a7f7337b8d",
+  "effectiveConfig": {
+    "schemaVersion": 1,
+    "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+    "campaignClass": "final-submission-remeasurement",
+    "randomSeed": 20260801,
+    "regions": {
+      "coordinator": "SeetaCloud Northwest-B",
+      "provider": "SeetaCloud Beijing-B"
+    },
+    "remote": {
+      "connectionDetails": "Deployment-specific host, SSH port/user, and local executable paths are omitted. Configure these locally for reruns."
+    },
+    "network": {
+      "warmupSamples": 10,
+      "roundTripSamples": 100,
+      "handshakeWarmups": 2,
+      "handshakeSamples": 10
+    },
+    "protocol": {
+      "warmupSamples": 10,
+      "measuredSamples": 100,
+      "concurrencyLevels": [
+        1,
+        4,
+        8,
+        16
+      ],
+      "payloadBytes": 4096,
+      "serviceDelayMs": 5
+    },
+    "recovery": {
+      "warmupSamples": 2,
+      "measuredSamples": 20,
+      "payloadBytes": 4096,
+      "serviceDelayMs": 5
+    }
+  },
+  "sources": {
+    "scripts/v2/benchmark_wan_v2.js": "dfac4e5fb09627a10557c3225c353c8b0d791710c5f256619c3a7db56b59b0b0",
+    "scripts/v2/benchmark_protocol_v2.js": "862a62278bc47b28c354ed8127675058a16092f2f376cb04c394101103f5c1e4",
+    "scripts/v2/wan_provider_stdio.js": "49bc37de99a96f15491b2829cbbb43b3a49363c73b8e45fda35d7e9d33a399b3",
+    "lib/v2/experiment-utils.js": "e9c60afed644d69b6ab0a0e7e27c9ee9171a650a4a02d0b4ad698425ab63a793"
+  },
+  "runnerSha256": "c92f966f884c34fa2f64656fa1627b5b895c97c02f3826a6413fb922d5a1eda4",
+  "runtime": "v20.20.1",
+  "schedule": [
+    {
+      "round": 1,
+      "mode": "local",
+      "concurrency": 1
+    },
+    {
+      "round": 1,
+      "mode": "remote",
+      "concurrency": 1
+    },
+    {
+      "round": 1,
+      "mode": "local",
+      "concurrency": 4
+    },
+    {
+      "round": 1,
+      "mode": "remote",
+      "concurrency": 4
+    },
+    {
+      "round": 1,
+      "mode": "local",
+      "concurrency": 8
+    },
+    {
+      "round": 1,
+      "mode": "remote",
+      "concurrency": 8
+    },
+    {
+      "round": 1,
+      "mode": "local",
+      "concurrency": 16
+    },
+    {
+      "round": 1,
+      "mode": "remote",
+      "concurrency": 16
+    },
+    {
+      "round": 2,
+      "mode": "remote",
+      "concurrency": 4
+    },
+    {
+      "round": 2,
+      "mode": "local",
+      "concurrency": 4
+    },
+    {
+      "round": 2,
+      "mode": "remote",
+      "concurrency": 8
+    },
+    {
+      "round": 2,
+      "mode": "local",
+      "concurrency": 8
+    },
+    {
+      "round": 2,
+      "mode": "remote",
+      "concurrency": 16
+    },
+    {
+      "round": 2,
+      "mode": "local",
+      "concurrency": 16
+    },
+    {
+      "round": 2,
+      "mode": "remote",
+      "concurrency": 1
+    },
+    {
+      "round": 2,
+      "mode": "local",
+      "concurrency": 1
+    },
+    {
+      "round": 3,
+      "mode": "local",
+      "concurrency": 8
+    },
+    {
+      "round": 3,
+      "mode": "remote",
+      "concurrency": 8
+    },
+    {
+      "round": 3,
+      "mode": "local",
+      "concurrency": 16
+    },
+    {
+      "round": 3,
+      "mode": "remote",
+      "concurrency": 16
+    },
+    {
+      "round": 3,
+      "mode": "local",
+      "concurrency": 1
+    },
+    {
+      "round": 3,
+      "mode": "remote",
+      "concurrency": 1
+    },
+    {
+      "round": 3,
+      "mode": "local",
+      "concurrency": 4
+    },
+    {
+      "round": 3,
+      "mode": "remote",
+      "concurrency": 4
+    }
+  ],
+  "methodology": "Original executeProtocolSetting, fixed Promise.all groups, unchanged seed/setting IDs, 10 warmup + 100 measured, 4096 bytes, 5 ms deterministic service. Only diagnostic observers added.",
+  "scope": "Tail-latency diagnosis only. Existing report includes complete-window metadata incidentally; this is not the deferred dedicated goodput experiment.",
+  "caveats": [
+    "Provider-request RTT includes SSH/stdio and coordinator scheduling; it is not pure wire RTT.",
+    "Event-loop measurements cover warmup plus measured range; per-call timestamps identify measured overlap.",
+    "/proc network counters are host/global and cannot alone establish flow-specific loss.",
+    "ss snapshots are taken outside protocol calls; match the SSH PID before interpreting counters.",
+    "No provider code changes; remote serviceMs captures timer scheduling + payload/hash but excludes final base64/JSON/stdio transmission.",
+    "Observers introduce small overhead; these diagnostic repetitions do not silently replace the published campaign."
+  ],
+  "publicationMetadata": {
+    "connectionConfigurationRemoved": true,
+    "measurementRecordsUnchanged": true,
+    "sourceManifestSha256": "d3ff9e329063634cbbc24d61ee2ab0b19c176c3e5a7e770e3dac285831b5e981"
+  }
+}

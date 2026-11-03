@@ -1,0 +1,338 @@
+[
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r1-local-c1",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 1,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 3537.355291366577,
+      "throughputOpsPerSecond": 28.269707666646983
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r1-remote-c1",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 1,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 8657.935562133789,
+      "throughputOpsPerSecond": 11.55009751254773
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r1-local-c4",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 4,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2141.5862188339233,
+      "throughputOpsPerSecond": 46.694360993062986
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r1-remote-c4",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 4,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 3129.5520124435425,
+      "throughputOpsPerSecond": 31.95345519179289
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r1-local-c8",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 8,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2057.640543937683,
+      "throughputOpsPerSecond": 48.59935341701187
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r1-remote-c8",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 8,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2502.928548812866,
+      "throughputOpsPerSecond": 39.953198043719546
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r1-local-c16",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 16,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2014.6121978759766,
+      "throughputOpsPerSecond": 49.637344648975564
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r1-remote-c16",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 16,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2125.2346172332764,
+      "throughputOpsPerSecond": 47.05362842723896
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r2-remote-c4",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 4,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 3493.821488380432,
+      "throughputOpsPerSecond": 28.621954594009665
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r2-local-c4",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 4,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2120.476288795471,
+      "throughputOpsPerSecond": 47.159216317766344
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r2-remote-c8",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 8,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2611.338105201721,
+      "throughputOpsPerSecond": 38.29454324616275
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r2-local-c8",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 8,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2158.0442638397217,
+      "throughputOpsPerSecond": 46.33825249815498
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r2-remote-c16",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 16,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2204.0841245651245,
+      "throughputOpsPerSecond": 45.37031907515347
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r2-local-c16",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 16,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2057.2400341033936,
+      "throughputOpsPerSecond": 48.60881488901366
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r2-remote-c1",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 1,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 7311.954899787903,
+      "throughputOpsPerSecond": 13.676233151123606
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r2-local-c1",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 1,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 3144.680149078369,
+      "throughputOpsPerSecond": 31.79973646264394
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r3-local-c8",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 8,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2007.8955268859863,
+      "throughputOpsPerSecond": 49.8033880054947
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r3-remote-c8",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 8,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2581.4729890823364,
+      "throughputOpsPerSecond": 38.737573634480704
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r3-local-c16",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 16,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2048.947275161743,
+      "throughputOpsPerSecond": 48.80555064166111
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r3-remote-c16",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 16,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2621.8018321990967,
+      "throughputOpsPerSecond": 38.14170803142764
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r3-local-c1",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 1,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 3426.9043893814087,
+      "throughputOpsPerSecond": 29.18085497507884
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r3-remote-c1",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 1,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 8136.431698799133,
+      "throughputOpsPerSecond": 12.29039998145122
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r3-local-c4",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "local",
+      "concurrency": 4,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 2339.3812074661255,
+      "throughputOpsPerSecond": 42.7463466325413
+    }
+  },
+  {
+    "campaignFolder": "wan-full-batch3",
+    "run": "r3-remote-c4",
+    "originalReport": {
+      "campaignId": "wan-tail-diagnostic-2026-11-02T04-01-48-600Z",
+      "transportMode": "remote",
+      "concurrency": 4,
+      "measuredSamples": 100,
+      "firstMeasuredIteration": 11,
+      "lastMeasuredIteration": 110,
+      "measuredElapsedMs": 3745.8303985595703,
+      "throughputOpsPerSecond": 26.696350170700256
+    }
+  }
+]

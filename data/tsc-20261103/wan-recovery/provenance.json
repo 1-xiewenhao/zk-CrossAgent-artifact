@@ -1,0 +1,9 @@
+{
+  "selection": "All wan_provider_recovery records, preserving 20 measured rounds and 2 warm-ups; other experiment types are not part of this dataset.",
+  "sourceCampaignIds": [
+    "fgcs-submission-20261015-wan-key-static"
+  ],
+  "recordType": "wan_provider_recovery",
+  "rawMatchesArchivedSourceRecords": true,
+  "sourceArchiveSha256": "07552cf5792dec21503c439886e00585fe587b0378e9958b0cd9c3ac16eb4738"
+}

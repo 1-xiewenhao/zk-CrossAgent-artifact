@@ -12,6 +12,10 @@ const excludedDirectories = new Set([
 ]);
 const scannedExtensions = new Set([
   ".circom",
+  ".cjs",
+  ".jsonl",
+  ".py",
+  ".txt",
   ".example",
   ".js",
   ".json",
@@ -31,7 +35,7 @@ function recordFinding(fullPath, content, match) {
   findings.push({
     file: path.relative(root, fullPath),
     line: content.slice(0, offset).split("\n").length,
-    preview: `${value.slice(0, 10)}...${value.slice(-6)}`,
+    preview: "[redacted]",
   });
 }
 
@@ -62,7 +66,7 @@ function scanDirectory(directory) {
     // broad literal check everywhere except the frozen public-results tree.
     // The contextual assignment check above still scans that tree.
     const relativePath = path.relative(root, fullPath).split(path.sep).join("/");
-    if (!relativePath.startsWith("experiments/v2/results/")) {
+    if (!relativePath.startsWith("experiments/v2/results/") && !relativePath.startsWith("data/tsc-20261103/")) {
       for (const match of content.matchAll(literalPrivateKey)) {
         recordFinding(fullPath, content, match);
       }

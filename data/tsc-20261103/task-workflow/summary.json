@@ -1,0 +1,254 @@
+{
+  "dependent_chain": {
+    "tasks": 100,
+    "passed": 100,
+    "acceptedCalls": 300,
+    "historicalAdmittedCalls": 300,
+    "dependencyEdges": 200,
+    "budgetRejects": 0,
+    "countRejects": 0,
+    "nonceRejects": 0,
+    "failedReservations": 0,
+    "recoveredAfterRestart": 0,
+    "duplicateLocalReconciliations": 300,
+    "duplicateSettlementRejected": 300,
+    "onlineDiagnosticMs": {
+      "count": 100,
+      "mean": 117.07576034545899,
+      "stddev": 30.87111194309537,
+      "ci95": [
+        111.0250224046123,
+        123.12649828630568
+      ],
+      "p50": 116.2831597328186,
+      "p95": 165.40319724082946,
+      "p99": 177.9471249103547,
+      "min": 64.41555786132812,
+      "max": 191.27130889892578
+    },
+    "totalDiagnosticMs": {
+      "count": 100,
+      "mean": 432.12178346633914,
+      "stddev": 55.123118444155786,
+      "ci95": [
+        421.3176522512846,
+        442.9259146813937
+      ],
+      "p50": 434.4389343261719,
+      "p95": 506.3510745048523,
+      "p99": 541.0914375495913,
+      "min": 217.84268856048584,
+      "max": 598.0582647323608
+    }
+  },
+  "budget_contention": {
+    "tasks": 100,
+    "passed": 100,
+    "acceptedCalls": 300,
+    "historicalAdmittedCalls": 300,
+    "dependencyEdges": 200,
+    "budgetRejects": 200,
+    "countRejects": 0,
+    "nonceRejects": 0,
+    "failedReservations": 0,
+    "recoveredAfterRestart": 0,
+    "duplicateLocalReconciliations": 300,
+    "duplicateSettlementRejected": 300,
+    "onlineDiagnosticMs": {
+      "count": 100,
+      "mean": 175.7659954929352,
+      "stddev": 35.88837302971999,
+      "ci95": [
+        168.73187437911008,
+        182.8001166067603
+      ],
+      "p50": 182.92896938323975,
+      "p95": 212.3095766544342,
+      "p99": 221.59096200943068,
+      "min": 90.77629661560059,
+      "max": 366.2613115310669
+    },
+    "totalDiagnosticMs": {
+      "count": 100,
+      "mean": 494.25241467475894,
+      "stddev": 61.00333549455815,
+      "ci95": [
+        482.29576091782553,
+        506.20906843169234
+      ],
+      "p50": 495.66584157943726,
+      "p95": 579.1034335613251,
+      "p99": 596.144258041382,
+      "min": 340.41585063934326,
+      "max": 653.064001083374
+    }
+  },
+  "count_contention": {
+    "tasks": 100,
+    "passed": 100,
+    "acceptedCalls": 300,
+    "historicalAdmittedCalls": 300,
+    "dependencyEdges": 200,
+    "budgetRejects": 0,
+    "countRejects": 200,
+    "nonceRejects": 0,
+    "failedReservations": 0,
+    "recoveredAfterRestart": 0,
+    "duplicateLocalReconciliations": 300,
+    "duplicateSettlementRejected": 300,
+    "onlineDiagnosticMs": {
+      "count": 100,
+      "mean": 175.58819861412047,
+      "stddev": 29.21765267332852,
+      "ci95": [
+        169.86153869014808,
+        181.31485853809286
+      ],
+      "p50": 185.41637754440308,
+      "p95": 209.6139768600464,
+      "p99": 214.6210867977143,
+      "min": 89.2236909866333,
+      "max": 222.59458446502686
+    },
+    "totalDiagnosticMs": {
+      "count": 100,
+      "mean": 498.7064682292938,
+      "stddev": 60.02954669837332,
+      "ci95": [
+        486.94067707641267,
+        510.47225938217497
+      ],
+      "p50": 510.00689935684204,
+      "p95": 579.3804468631745,
+      "p99": 592.175387363434,
+      "min": 307.58510875701904,
+      "max": 614.1782283782959
+    }
+  },
+  "failure_replacement": {
+    "tasks": 100,
+    "passed": 100,
+    "acceptedCalls": 300,
+    "historicalAdmittedCalls": 400,
+    "dependencyEdges": 200,
+    "budgetRejects": 0,
+    "countRejects": 0,
+    "nonceRejects": 100,
+    "failedReservations": 100,
+    "recoveredAfterRestart": 0,
+    "duplicateLocalReconciliations": 300,
+    "duplicateSettlementRejected": 300,
+    "onlineDiagnosticMs": {
+      "count": 100,
+      "mean": 162.35768294334412,
+      "stddev": 37.03403671305611,
+      "ci95": [
+        155.0990117475851,
+        169.61635413910312
+      ],
+      "p50": 174.58454608917236,
+      "p95": 206.35468225479124,
+      "p99": 212.35011651992832,
+      "min": 82.54277420043945,
+      "max": 277.8455801010132
+    },
+    "totalDiagnosticMs": {
+      "count": 100,
+      "mean": 474.72486139297484,
+      "stddev": 65.75314701836565,
+      "ci95": [
+        461.8372445773752,
+        487.6124782085745
+      ],
+      "p50": 487.24171686172485,
+      "p95": 572.7086215972901,
+      "p99": 583.2707178211213,
+      "min": 296.5873975753784,
+      "max": 585.1546697616577
+    }
+  },
+  "settlement_recovery": {
+    "tasks": 100,
+    "passed": 100,
+    "acceptedCalls": 300,
+    "historicalAdmittedCalls": 300,
+    "dependencyEdges": 200,
+    "budgetRejects": 0,
+    "countRejects": 0,
+    "nonceRejects": 0,
+    "failedReservations": 0,
+    "recoveredAfterRestart": 100,
+    "duplicateLocalReconciliations": 300,
+    "duplicateSettlementRejected": 300,
+    "onlineDiagnosticMs": {
+      "count": 100,
+      "mean": 142.6216750907898,
+      "stddev": 42.96612347077568,
+      "ci95": [
+        134.20031489051777,
+        151.04303529106184
+      ],
+      "p50": 148.24095392227173,
+      "p95": 184.21145429611204,
+      "p99": 263.0302696037299,
+      "min": 74.66441535949707,
+      "max": 387.9728078842163
+    },
+    "totalDiagnosticMs": {
+      "count": 100,
+      "mean": 467.16287863731384,
+      "stddev": 81.5449053110218,
+      "ci95": [
+        451.1800771963536,
+        483.1456800782741
+      ],
+      "p50": 459.35532569885254,
+      "p95": 566.2026742458343,
+      "p99": 663.4898642921465,
+      "min": 295.48966121673584,
+      "max": 987.4155292510986
+    }
+  },
+  "integrated_workflow": {
+    "tasks": 100,
+    "passed": 100,
+    "acceptedCalls": 300,
+    "historicalAdmittedCalls": 400,
+    "dependencyEdges": 200,
+    "budgetRejects": 200,
+    "countRejects": 0,
+    "nonceRejects": 100,
+    "failedReservations": 100,
+    "recoveredAfterRestart": 100,
+    "duplicateLocalReconciliations": 300,
+    "duplicateSettlementRejected": 300,
+    "onlineDiagnosticMs": {
+      "count": 100,
+      "mean": 183.37335083961486,
+      "stddev": 35.4504734204861,
+      "ci95": [
+        176.42505804919958,
+        190.32164363003014
+      ],
+      "p50": 179.72267246246338,
+      "p95": 232.66871542930602,
+      "p99": 244.5924120712281,
+      "min": 96.43600082397461,
+      "max": 256.76169204711914
+    },
+    "totalDiagnosticMs": {
+      "count": 100,
+      "mean": 499.3901695823669,
+      "stddev": 61.25451366634156,
+      "ci95": [
+        487.38428490376396,
+        511.3960542609699
+      ],
+      "p50": 498.4299750328064,
+      "p95": 584.8679095745086,
+      "p99": 622.1888076400758,
+      "min": 316.24716663360596,
+      "max": 632.8819360733032
+    }
+  }
+}

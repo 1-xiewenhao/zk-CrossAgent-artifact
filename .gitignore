@@ -24,3 +24,6 @@ circuits/v2/evidence/
 *.r1cs
 *.wasm
 __pycache__/
+
+# Audited synthetic task-workflow state for offline reproduction.
+!data/tsc-20261103/task-workflow/protocol.sqlite.gz

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-02T09:13:22.349Z",
+  "taskCountPerScenario": 100,
+  "scenarios": [
+    "dependent_chain",
+    "budget_contention",
+    "count_contention",
+    "failure_replacement",
+    "settlement_recovery",
+    "integrated_workflow"
+  ],
+  "services": [
+    {
+      "name": "retrieve",
+      "providerAmount": 4,
+      "fee": 1,
+      "bytes": 512,
+      "delayMs": 2
+    },
+    {
+      "name": "analyze",
+      "providerAmount": 8,
+      "fee": 2,
+      "bytes": 2048,
+      "delayMs": 5
+    },
+    {
+      "name": "compose",
+      "providerAmount": 13,
+      "fee": 2,
+      "bytes": 1024,
+      "delayMs": 3
+    }
+  ],
+  "sourceHashes": {
+    "lib/protocol-v2.js": "e6434430a4d29ec5a6e17c4d171dd597f22c83e416ca9d0003a82aba8145c173",
+    "lib/v2/persistent-state.js": "7106ce0d48bede304076e6438e70de03ee0a2b875e3d2b1e12a0fd8649a909bb",
+    "lib/v2/secure-gateway.js": "ecb3b4fdd68402c62fd59dd85a6f1c1eba39d830476426ebed58c9de8451ec53",
+    "lib/v2/delivery-validation.js": "ed4c94c3295d94d4c16226887353848ad6bf46414a772d4765f3b2f93c42d49a",
+    "lib/v2/experiment-utils.js": "e9c60afed644d69b6ab0a0e7e27c9ee9171a650a4a02d0b4ad698425ab63a793",
+    "contracts/v2/EscrowReceiptV2.sol": "c02b48bf47dead0f3ce2fe75acb3ef89b96c7a528b43bebb77d358b0a5492f05",
+    "contracts/v2/RootCapabilityRegistryV2.sol": "60978665495a7c8f60e4394a99abb89ba7d55189c9fbd1beb315837a0e213ffc",
+    "contracts/v2/BatchInboxV2.sol": "84f129c6740a0d165a9915e8f8b83367227cc20f65e5f0c1658b35c917cc1495",
+    "artifacts/contracts/v2/EscrowReceiptV2.sol/EscrowReceiptV2.json": "4814f62e5b11a041d27694999c07a3037303338f965135778acb5ecb0b3397cb"
+  },
+  "runnerSha256": "8aca6fa03726c7342afcb59d44faea4522dd4d2d15dad48bb30a0bb2420c7127",
+  "runtime": {
+    "node": "v20.20.1",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "scope": "Controlled local services and local Hardhat EVM. Trusted endpoint accepts fixture batch root; no fresh Groth16 proof, public-chain consensus or model-quality evaluation. Recovery fixture closes and reopens SQLite/gateway at an interrupted-reconciliation boundary; the harness queries isSettled then invokes markSettled. No relayer-daemon crash or power-loss test.",
+  "concurrency": "Four separate Node child processes, each with its own SQLite connection; the coordinator waits until all are armed then broadcasts start over IPC. Shared database and trusted-gateway authority. Actual start/end timestamps are retained; start broadcasts are not simultaneous atomic machine instructions.",
+  "warmup": "No latency claim or latency comparison is predeclared. All task iterations are correctness observations; times are retained diagnostically."
+}

@@ -1,17 +1,23 @@
 # zk-CrossAgent
 
-Reproduction artifact for **zk-CrossAgent: Task-Bounded Authorization and Cross-Chain
-Settlement for Autonomous AI Agents**.
+Companion artifact for **zk-CrossAgent: Task-Bounded Service Invocation
+and Asynchronous Cross-Chain Settlement** (IEEE Transactions on Services Computing submission).
 
 This repository contains the protocol implementation, smart contracts,
-zero-knowledge circuit, formal models, automated tests, and experiment drivers.
-Release **`fgcs-artifact-v1.1.0`** also includes the retained measurements,
-statistical summaries, campaign configurations and verification reports used
-by the manuscript. A standard-library Python script recalculates the numerical
-summaries without external services. WAN goodput is retained as an aggregate;
-its original full-window timer was not separately archived, as documented in
-the [dataset README](data/measurement-20261015/README.md). Independent benchmark
-reruns create new observations and do not guarantee identical timing results.
+zero-knowledge circuit, formal models, automated tests, experiment drivers,
+and the measurement campaigns used by the current manuscript. The archive
+retains each campaign's acquisition time and provenance; its directory date
+identifies the publication package, not a common experiment date.
+
+The [dataset README](data/tsc-20261103/README.md) maps the archived records to
+Sections V--VI, Tables I--V, and Figures 2--4. The WAN performance campaign
+contains three complete runs, 300 measured calls per placement/concurrency
+setting, and all 24 complete measurement-window durations. Its goodput can
+therefore be recalculated independently. The separate 20-round WAN recovery
+campaign and 600-task workflow campaign have their own records and scope.
+A standard-library Python script recalculates the reported statistics without
+connecting to external services. Independent benchmark runs create new
+observations and do not guarantee identical timings.
 
 To inspect the reported statistics without installing Node.js dependencies:
 
@@ -28,10 +34,11 @@ python scripts/recalculate_paper.py --output tmp/paper-statistics.json
 | `circuits/v2/` | Circom source; build products and proving parameters are generated locally |
 | `formal/` | ProVerif authentication model and explicit state model |
 | `test/` | Automated protocol, contract, recovery, and verifier tests |
-| `scripts/v2/` | Experiment and verification implementations |
+| `scripts/v2/` | Local, model-service, public-testnet, and recovery experiments |
+| `scripts/paper/` | Complete WAN performance and task-workflow campaigns |
 | `experiments/v2/configs/` | Sample counts, workloads, and confirmation settings |
 | `scripts/wan/` | Two-host launch support and metadata caching before timing |
-| `data/measurement-20261015/` | Retained measurements, hashes, methodology and table/figure mapping |
+| `data/tsc-20261103/` | Retained measurements, hashes, methodology and table/figure mapping |
 | `scripts/recalculate_paper.py` | Offline statistical recalculation and consistency checks |
 
 ## Environment
@@ -62,8 +69,8 @@ cp .env.example .env
 npm run repro:environment
 ```
 
-The original dependency resolutions are retained. The packaging changes do not
-update the protocol dependencies or alter the workload sizes.
+Use the recorded dependency versions and campaign configurations when reproducing
+the experiments. Document any local changes to the environment or workload.
 
 ## Start with local checks
 
@@ -140,9 +147,26 @@ measurements on Hardhat, and matched Gas-policy calculations. Result files are
 written under `experiments/v2/results/reproduction-local/` and
 `experiments/v2/results/reproduction-fault-gas/`.
 
+Run the separate task-workflow correctness campaign after installing dependencies
+and compiling the contracts:
+
+```sh
+npm run compile
+npm run repro:task-workflow
+# Optional: choose a new output directory and the tasks per scenario.
+npm run repro:task-workflow -- experiments/v2/results/my-task-workflow 100
+```
+
+The default is six scenarios with 100 tasks each. The runner exercises concurrent
+admission, pre-commit failure, and interrupted reconciliation with the gateway's
+durable SQLite state and a local EVM. Its test endpoint accepts batch roots
+directly; this campaign requires no fresh Groth16 setup and does not measure
+source-chain relaying or public-chain finality. The archive contains exported
+records and accounting traces; see the dataset README for their scope.
+
 See [the external experiment instructions](docs/EXTERNAL_EXPERIMENTS.md) for:
 
-- geographically separated WAN execution;
+- the three-run geographical WAN performance campaign and separate provider recovery;
 - the DeepSeek model-service request experiment;
 - Polygon Amoy/Sepolia deployment, confirmation timing, settlement, and withdrawal.
 
@@ -157,21 +181,23 @@ time depend on the environment. Independent reruns do not guarantee the exact
 numbers reported in the manuscript. Failed or interrupted runs should be preserved
 locally and identified as such, rather than merged silently into completed runs.
 
-To plot the newly generated local/WAN summaries, install matplotlib in your own
-Python environment and run:
+To plot newly generated local summaries, install matplotlib in your own Python
+environment and run:
 
 ```sh
 python scripts/plot_results.py --local experiments/v2/results/reproduction-local
-python scripts/plot_results.py --wan experiments/v2/results/reproduction-wan
 ```
 
-These plots visualize the rerun; they are not copies of the manuscript's figures.
+The offline recalculation report exports the archived Figure 3 values from the
+three complete WAN runs. Plots of newly generated measurements visualize that
+run; they are not copies of the manuscript's figures.
 
 ## Scope of availability
 
-This release includes code and the documented measurement archive. The source
-inventory and packaging changes are recorded in `docs/SOURCE_PROVENANCE.json`;
-data transformations and hashes are in `data/measurement-20261015/manifest.json`.
+This snapshot includes the code and measurement campaigns used by the current
+manuscript. Superseded measurements and diagnostic trials are outside this
+publication dataset. Source provenance is recorded in `docs/SOURCE_PROVENANCE.json`;
+data provenance, transformations, and hashes are in `data/tsc-20261103/manifest.json`.
 Secrets, private endpoint configuration and bulky regenerable build artifacts
 are omitted. New benchmark results remain ignored by Git; the published archive
 is kept in a separate read-only analysis location.

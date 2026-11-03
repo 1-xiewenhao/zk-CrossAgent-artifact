@@ -1,0 +1,97 @@
+[
+  {
+    "campaignId": "fgcs-submission-20261015-wan-key-static",
+    "recordType": "wan_provider_recovery",
+    "transportMode": "remote",
+    "concurrency": null,
+    "metric": "remoteServiceMs",
+    "count": 20,
+    "mean": 6.139608764648438,
+    "stddev": 0.5400594450295574,
+    "ci95": [
+      5.902917276976965,
+      6.37630025231991
+    ],
+    "p50": 5.885873794555664,
+    "p95": 6.954572677612305,
+    "p99": 6.986202621459961,
+    "min": 5.487644195556641,
+    "max": 6.994110107421875
+  },
+  {
+    "campaignId": "fgcs-submission-20261015-wan-key-static",
+    "recordType": "wan_provider_recovery",
+    "transportMode": "remote",
+    "concurrency": null,
+    "metric": "crashDetectedMs",
+    "count": 20,
+    "mean": 30.191697978973387,
+    "stddev": 1.2476080096940778,
+    "ci95": [
+      29.644909660459348,
+      30.738486297487427
+    ],
+    "p50": 30.055727005004883,
+    "p95": 31.937521743774415,
+    "p99": 32.536327896118166,
+    "min": 27.945817947387695,
+    "max": 32.6860294342041
+  },
+  {
+    "campaignId": "fgcs-submission-20261015-wan-key-static",
+    "recordType": "wan_provider_recovery",
+    "transportMode": "remote",
+    "concurrency": null,
+    "metric": "reconnectHandshakeMs",
+    "count": 20,
+    "mean": 612.391721534729,
+    "stddev": 207.68213950630144,
+    "ci95": [
+      521.3710107315868,
+      703.4124323378711
+    ],
+    "p50": 499.2589635848999,
+    "p95": 911.4063480377199,
+    "p99": 1070.5028897857665,
+    "min": 426.1128101348877,
+    "max": 1110.2770252227783
+  },
+  {
+    "campaignId": "fgcs-submission-20261015-wan-key-static",
+    "recordType": "wan_provider_recovery",
+    "transportMode": "remote",
+    "concurrency": null,
+    "metric": "retryRoundTripMs",
+    "count": 20,
+    "mean": 59.716998958587645,
+    "stddev": 85.7702507053453,
+    "ci95": [
+      22.126529197814776,
+      97.30746871936051
+    ],
+    "p50": 29.82557773590088,
+    "p95": 234.08907737731946,
+    "p99": 344.87984703063944,
+    "min": 28.25016975402832,
+    "max": 372.5775394439697
+  },
+  {
+    "campaignId": "fgcs-submission-20261015-wan-key-static",
+    "recordType": "wan_provider_recovery",
+    "transportMode": "remote",
+    "concurrency": null,
+    "metric": "recoveryTotalMs",
+    "count": 20,
+    "mean": 702.3582074165345,
+    "stddev": 241.85929557487233,
+    "ci95": [
+      596.3586975409912,
+      808.3577172920777
+    ],
+    "p50": 558.9971036911011,
+    "p95": 1152.3834372520448,
+    "p99": 1183.4421446037293,
+    "min": 485.13219451904297,
+    "max": 1191.2068214416504
+  }
+]

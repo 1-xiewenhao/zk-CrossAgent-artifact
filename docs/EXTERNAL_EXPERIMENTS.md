@@ -43,15 +43,47 @@ port, user, absolute provider-script path, and absolute `scripts/wan/wan-node` p
 Use remote paths without spaces; the SSH command transports these as arguments.
 Verify that `node` is available in the remote user's noninteractive `PATH`.
 
+### WAN performance used in Figure 3
+
+Run the complete performance campaign with your deployment configuration:
+
 ```sh
-node scripts/reproduce.js wan experiments/v2/configs/wan.local.json
+npm run repro:wan-paper -- experiments/v2/configs/wan.local.json
+# Optional: choose a new result directory.
+npm run repro:wan-paper -- experiments/v2/configs/wan.local.json experiments/v2/results/my-wan-paper
 ```
 
-The configured workloads include local and remote transport, network round trips,
-handshakes, concurrency levels 1/4/8/16, and provider interruption/recovery.
-The sample settings are preserved; replace only host-specific fields. Keep
-`campaignId` distinct for each complete rerun. Do not substitute the original
-password/askpass startup for the documented key-based SSH setup.
+The campaign runs three complete repetitions of both placements (same host and
+cross region) at concurrency 1, 4, 8, and 16. Each setting retains 100 calls after
+10 warm-ups in each repetition: 2,400 measured calls, 240 warm-ups, and 24 complete
+measurement windows in total. All measured calls from the three repetitions
+contribute to the reported latency distribution. Goodput is total completed calls
+divided by the sum of the three complete windows for each placement/concurrency
+setting. It is not the arithmetic mean of the three goodputs or the inverse of
+mean latency. Preserve the window reports alongside the per-call records.
+
+Replace deployment-specific fields rather than changing the workload to reproduce
+the manuscript configuration. Keep each complete campaign's records and provenance
+together; use a distinct output directory for each new campaign. Do not substitute
+the original password/askpass startup for the documented key-based SSH setup.
+
+### Separate provider-recovery experiment
+
+The provider-recovery experiment is independent of Figure 3. The existing WAN
+driver includes transport measurements and 20 retained provider-recovery rounds
+after two warm-ups, controlled by the `recovery` block in the configuration:
+
+```sh
+npm run repro:wan -- experiments/v2/configs/wan.local.json
+```
+
+This legacy combined driver also writes its own protocol sweep; those results are
+not the three-run Figure 3 campaign. Use its provider-recovery records for
+Section VI-E(b), keeping them separate from the performance campaign. The
+published archive includes only the provider-recovery records used by that section,
+not the obsolete protocol sweep. Recovery includes session establishment,
+authentication, and restarting the remote provider process; the coordinator's
+receipt-signing and delivery-key functions remain available.
 
 ## Model-service requests
 
